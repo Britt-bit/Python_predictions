@@ -17,15 +17,17 @@ while number_of_plays > 0:
     if user_choice == random_choice:
         print("It's a tie! You both chose", user_choice)
         number_of_plays += 1
-    elif (user_choice == "rock" and random_choice == "scissors") or \
-         (user_choice == "paper" and random_choice == "rock") or \
-         (user_choice == "scissors" and random_choice == "paper"):
+    elif (
+        (user_choice == "rock" and random_choice == "scissors")
+        or (user_choice == "paper" and random_choice == "rock")
+        or (user_choice == "scissors" and random_choice == "paper")
+    ):
         print("You win! You chose", user_choice, "and the computer chose", random_choice)
         user_wins += 1
     else:
         print("You lose! You chose", user_choice, "and the computer chose", random_choice)
         computer_wins += 1
-    
+
     number_of_plays -= 1
 
 if user_wins > computer_wins:

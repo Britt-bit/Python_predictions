@@ -63,11 +63,9 @@ def mark_as_read(connection: sqlite3.Connection, book_id: int) -> None:
         print("Marked as read.")
     connection.commit()
 
+
 def search_book(connection: sqlite3.Connection, book_title: str) -> None:
-    cursor = connection.execute(
-        "SELECT * FROM books WHERE title LIKE ?",
-        (f"%{book_title}%",)
-    )
+    cursor = connection.execute("SELECT * FROM books WHERE title LIKE ?", (f"%{book_title}%",))
     books = cursor.fetchall()
     if not books:
         print("No books found under this title")
@@ -154,7 +152,7 @@ def run_menu(connection: sqlite3.Connection) -> None:
             book_title = input("Title of the book you're searching: ").strip()
             print(book_title)
             if book_title is not None:
-                search_book(connection, book_title)    
+                search_book(connection, book_title)
 
         elif choice == "6":
             print("Goodbye.")

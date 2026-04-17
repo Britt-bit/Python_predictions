@@ -28,6 +28,7 @@ def save_bookmarks(bookmarks: list) -> None:
         encoding="utf-8",
     )
 
+
 def show_bookmarks():
     bookmarks = load_bookmarks()
 
@@ -40,10 +41,13 @@ def show_bookmarks():
             date = bookmark.get("date", "")
             print(f"{i}. {title} ({url}): {date}")
 
+
 def main() -> None:
     while True:
         bookmarks = load_bookmarks()
-        user_input = input("What do you want to do? (add, list, delete, clear, edit) ").strip().lower()
+        user_input = (
+            input("What do you want to do? (add, list, delete, clear, edit) ").strip().lower()
+        )
         if user_input == "list":
             show_bookmarks()
         elif user_input == "add":
@@ -55,7 +59,9 @@ def main() -> None:
             print("Bookmark", title, "added!")
         elif user_input == "delete":
             show_bookmarks()
-            index = int(input("Enter the index number of the bookmark you want to delete: ").strip())
+            index = int(
+                input("Enter the index number of the bookmark you want to delete: ").strip()
+            )
             if index > len(bookmarks) or index < 1:
                 print("Invalid index")
             else:
@@ -76,8 +82,12 @@ def main() -> None:
                 print("Invalid index")
             else:
                 bookmark = bookmarks[index - 1]
-                new_url = input(f"Enter the new URL (leave blank to keep '{bookmark['url']}'): ").strip()
-                new_title = input(f"Enter the new title (leave blank to keep '{bookmark['title']}'): ").strip()
+                new_url = input(
+                    f"Enter the new URL (leave blank to keep '{bookmark['url']}'): "
+                ).strip()
+                new_title = input(
+                    f"Enter the new title (leave blank to keep '{bookmark['title']}'): "
+                ).strip()
                 if new_url:
                     bookmark["url"] = new_url
                 if new_title:

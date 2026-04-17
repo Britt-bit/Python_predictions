@@ -51,9 +51,11 @@ def print_pokemon(data: dict) -> None:
 
 
 def main() -> None:
-    choice = input(
-        "What do you want to do, show one Pokémon or list many? (one / all): "
-    ).strip().lower()
+    choice = (
+        input("What do you want to do, show one Pokémon or list many? (one / all): ")
+        .strip()
+        .lower()
+    )
 
     if choice == "all":
         limit = 20
