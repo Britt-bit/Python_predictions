@@ -1,7 +1,4 @@
 from unittest.mock import MagicMock, patch
-import sys
-import os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from api_project.pokemon import (
     REQUEST_TIMEOUT,
