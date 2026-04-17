@@ -1,2 +1,44 @@
-/.idea/
-/.venv/
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE / editor (keep .vscode/ if you want shared launch/tasks in the repo)
+.idea/
+*.swp
+*~
+
+# Python bytecode / cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Test & lint tool caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# Packaging / build (if you publish a package later)
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Local secrets (API keys, etc.)
+.env
+.env.*
+!.env.example
+secrets.env
+api_project/secrets.env
+
+# Local / generated databases (your machine’s data, not the repo)
+*.sqlite
+*.sqlite3
+*.db
+
+# macOS
+.DS_Store

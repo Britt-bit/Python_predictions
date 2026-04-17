@@ -63,6 +63,22 @@ def mark_as_read(connection: sqlite3.Connection, book_id: int) -> None:
         print("Marked as read.")
     connection.commit()
 
+def search_book(connection: sqlite3.Connection, book_title: str) -> None:
+    cursor = connection.execute(
+        "SELECT * FROM books WHERE title LIKE ?",
+        (f"%{book_title}%",)
+    )
+    books = cursor.fetchall()
+    if not books:
+        print("No books found under this title")
+        return
+    for book in books:
+        read_label = "Yes" if book[4] else "No"
+        print(
+            f"ID: {book[0]}, Title: {book[1]}, Author: {book[2]}, "
+            f"Year: {book[3]}, Read: {read_label}"
+        )
+
 
 def delete_book(connection: sqlite3.Connection, book_id: int) -> None:
     cursor = connection.execute(
@@ -99,8 +115,9 @@ def run_menu(connection: sqlite3.Connection) -> None:
         print("2. List books")
         print("3. Mark a book as read")
         print("4. Delete a book")
-        print("5. Quit")
-        choice = input("Choose an option (1–5): ").strip()
+        print("5. Search by title")
+        print("6. Quit")
+        choice = input("Choose an option (1–6): ").strip()
 
         if choice == "1":
             title = input("Title: ").strip()
@@ -134,6 +151,12 @@ def run_menu(connection: sqlite3.Connection) -> None:
                 delete_book(connection, book_id)
 
         elif choice == "5":
+            book_title = input("Title of the book you're searching: ").strip()
+            print(book_title)
+            if book_title is not None:
+                search_book(connection, book_title)    
+
+        elif choice == "6":
             print("Goodbye.")
             break
 
