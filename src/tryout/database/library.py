@@ -1,7 +1,8 @@
 import sqlite3
 from pathlib import Path
 
-DATA_FILE = Path(__file__).resolve().parent / "library.sqlite"
+_PROJECT_ROOT = Path(__file__).resolve().parents[3]
+DATA_FILE = _PROJECT_ROOT / "data" / "library.sqlite"
 
 
 def ensure_schema(connection: sqlite3.Connection) -> None:

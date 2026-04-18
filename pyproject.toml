@@ -1,15 +1,29 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tryout"
+version = "0.1.0"
+description = "Small Python learning exercises (CLI tools and APIs)"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.31.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "ruff>=0.8.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [tool.pytest.ini_options]
+pythonpath = ["src"]
 testpaths = ["tests"]
-pythonpath = ["."]
-addopts = "-q"
 
 [tool.ruff]
-target-version = "py311"
+src = ["src", "tests"]
 line-length = 100
-exclude = [".venv", ".git", ".idea"]
-
-[tool.ruff.lint]
-select = ["E4", "E7", "E9", "F", "I", "B"]
-
-[tool.ruff.format]
-quote-style = "double"

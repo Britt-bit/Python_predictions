@@ -33,7 +33,7 @@ dist/
 .env.*
 !.env.example
 secrets.env
-api_project/secrets.env
+**/secrets.env
 
 # Local / generated databases (your machine’s data, not the repo)
 *.sqlite

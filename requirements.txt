@@ -1,1 +1,2 @@
-requests>=2.31.0
+# Editable install pulls runtime deps from pyproject.toml (e.g. requests).
+-e .

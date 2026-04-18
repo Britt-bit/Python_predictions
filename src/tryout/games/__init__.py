@@ -1,0 +1,1 @@
+"""Small terminal games."""

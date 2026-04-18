@@ -3,7 +3,8 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-DATA_FILE = Path("data/bookmarks.json")
+_PROJECT_ROOT = Path(__file__).resolve().parents[3]
+DATA_FILE = _PROJECT_ROOT / "data" / "bookmarks.json"
 
 
 def load_bookmarks() -> list:
